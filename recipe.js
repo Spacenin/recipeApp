@@ -1,5 +1,6 @@
 const request = require("request");
 const fs = require("fs");
+const msgFile = require("./sendMsg.js");
 
 //Parse secrets file into JSON
 const secretsFile = JSON.parse(fs.readFileSync("secrets.json"));
@@ -18,11 +19,11 @@ function getRecipe() {
         }
     };
 
-    //Request and callback function to return url of recipe
+    //Request and callback function to send message
     request(options, ((error, response, body) => {
         if (error) throw new Error(error);
 
-        return(JSON.parse(body)["recipes"][0]["sourceUrl"]);
+        msgFile.sendMsg(JSON.parse(body)["recipes"][0]["sourceUrl"]);
     }));
 }
 
