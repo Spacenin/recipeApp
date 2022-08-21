@@ -4,6 +4,8 @@ const fs = require("fs");
 const secretsFile = JSON.parse(fs.readFileSync("secrets.json"));
 const ACCOUNT_SID = secretsFile["twilio"]["account_sid"];
 const AUTH_TOKEN = secretsFile["twilio"]["auth_token"];
+const MY_NUMBER = secretsFile["twilio"]["my_number"];
+const TWI_NUMBER = secretsFile["twilio"]["twi_number"];
 
 const twilio = require("twilio")(ACCOUNT_SID, AUTH_TOKEN);
 
@@ -11,8 +13,8 @@ const twilio = require("twilio")(ACCOUNT_SID, AUTH_TOKEN);
 function sendMsg(recipeUrl) {
     twilio.messages.create({
         body: "Here is your daily recipe: " + recipeUrl,
-        from: "+16626727200",
-        to: "+18645902895"
+        from: TWI_NUMBER,
+        to: MY_NUMBER
     }).then(message => (console.log("Sent recipe!")));
 }
 
