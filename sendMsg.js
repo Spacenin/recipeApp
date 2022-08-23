@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 //Parse secrets file into JSON and store needed info to create link with Twilio
-const secretsFile = JSON.parse(fs.readFileSync("secrets.json"));
+const secretsFile = JSON.parse(fs.readFileSync("/home/pi/Code/js/recipeApp/secrets.json"));
 const ACCOUNT_SID = secretsFile["twilio"]["account_sid"];
 const AUTH_TOKEN = secretsFile["twilio"]["auth_token"];
 const MY_NUMBER = secretsFile["twilio"]["my_number"];

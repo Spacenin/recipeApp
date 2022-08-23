@@ -3,7 +3,7 @@ const fs = require("fs");
 const msgFile = require("./sendMsg.js");
 
 //Parse secrets file into JSON
-const secretsFile = JSON.parse(fs.readFileSync("secrets.json"));
+const secretsFile = JSON.parse(fs.readFileSync("/home/pi/Code/js/recipeApp/secrets.json"));
 
 //Callable function to get daily recipe
 function getRecipe() {
